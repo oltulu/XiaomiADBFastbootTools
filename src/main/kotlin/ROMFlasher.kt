@@ -65,7 +65,7 @@ object ROMFlasher {
             script.delete()
         }
         withContext(Dispatchers.Main) {
-            outputTextArea.appendText("\nDone!")
+            outputTextArea.appendText("\nTamamlandı!")
             progressBar.progress = 0.0
             progressIndicator.isVisible = false
         }

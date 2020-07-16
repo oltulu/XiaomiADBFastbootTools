@@ -81,7 +81,7 @@ class FileExplorerController : Initializable {
             if (Device.checkADB()) {
                 withContext(Dispatchers.Main) {
                     FileChooser().apply {
-                        title = "Select files to copy"
+                        title = "Kopyalanacak dosyaları seçin"
                         showOpenMultipleDialog((event.source as Node).scene.window)?.let {
                             fileExplorer.push(it)
                             loadList()
@@ -98,7 +98,7 @@ class FileExplorerController : Initializable {
             if (Device.checkADB()) {
                 withContext(Dispatchers.Main) {
                     DirectoryChooser().apply {
-                        title = "Select the destination"
+                        title = "Hedefi seçin"
                         showDialog((event.source as Node).scene.window)?.let {
                             fileExplorer.pull(listView.selectionModel.selectedItems, it)
                             loadList()
@@ -117,8 +117,8 @@ class FileExplorerController : Initializable {
                     TextInputDialog().apply {
                         initStyle(StageStyle.UTILITY)
                         isResizable = false
-                        title = "New Folder"
-                        contentText = "Folder name:"
+                        title = "Yeni Klasör"
+                        contentText = "Klasör Adı:"
                         headerText = null
                         graphic = null
                         val result = showAndWait()
@@ -143,8 +143,8 @@ class FileExplorerController : Initializable {
                             isResizable = false
                             dialogPane.prefWidth *= 0.6
                             dialogPane.prefHeight *= 0.6
-                            title = "Delete"
-                            headerText = "Are you sure?"
+                            title = "Sil"
+                            headerText = "Emin misiniz?"
                             graphic = ImageView("delete.png")
                             val yes = ButtonType("Yes")
                             val no = ButtonType("No", ButtonBar.ButtonData.CANCEL_CLOSE)
@@ -169,10 +169,10 @@ class FileExplorerController : Initializable {
                         TextInputDialog(item.name).apply {
                             initStyle(StageStyle.UTILITY)
                             isResizable = false
-                            title = "Rename"
+                            title = "Yeniden Adlandır"
                             contentText = if (item.dir)
-                                "Folder name:"
-                            else "File name:"
+                                "Klasör Adı:"
+                            else "Dosya Adı:"
                             headerText = null
                             graphic = null
                             val result = showAndWait()

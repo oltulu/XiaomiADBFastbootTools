@@ -80,7 +80,7 @@ class FileExplorer(val statusTextField: TextField, val statusProgressBar: Progre
                             statusProgressBar.progress = output.substringBefore('%').trim('[', ' ').toInt() / 100.0
                             statusTextField.text = output
                         } else if ((command[1] == "shell" && command[2] in output) || "adb" in output)
-                            statusTextField.text = "ERROR: ${output.substringAfterLast(':').trim()}"
+                            statusTextField.text = "HATA: ${output.substringAfterLast(':').trim()}"
                     }
                 }
             }
@@ -96,7 +96,7 @@ class FileExplorer(val statusTextField: TextField, val statusProgressBar: Progre
             }
         }
         withContext(Dispatchers.Main) {
-            statusTextField.text = "Done!"
+            statusTextField.text = "Bitti!"
             statusProgressBar.progress = 0.0
         }
     }
@@ -106,7 +106,7 @@ class FileExplorer(val statusTextField: TextField, val statusProgressBar: Progre
             exec(mutableListOf("adb", "push", it.absolutePath, path))
         }
         withContext(Dispatchers.Main) {
-            statusTextField.text = "Done!"
+            statusTextField.text = "Bitti!"
             statusProgressBar.progress = 0.0
         }
     }
@@ -118,7 +118,7 @@ class FileExplorer(val statusTextField: TextField, val statusProgressBar: Progre
             else exec(mutableListOf("adb", "shell", "rm", "-f", (path + it.name).escape()))
         }
         withContext(Dispatchers.Main) {
-            statusTextField.text = "Done!"
+            statusTextField.text = "Bitti!"
             statusProgressBar.progress = 0.0
         }
     }
@@ -126,7 +126,7 @@ class FileExplorer(val statusTextField: TextField, val statusProgressBar: Progre
     suspend fun mkdir(name: String) {
         exec(mutableListOf("adb", "shell", "mkdir", (path + name).escape()))
         withContext(Dispatchers.Main) {
-            statusTextField.text = "Done!"
+            statusTextField.text = "Bitti!"
             statusProgressBar.progress = 0.0
         }
     }
@@ -134,7 +134,7 @@ class FileExplorer(val statusTextField: TextField, val statusProgressBar: Progre
     suspend fun rename(selected: AndroidFile, to: String) {
         exec(mutableListOf("adb", "shell", "mv", (path + selected.name).escape(), (path + to).escape()))
         withContext(Dispatchers.Main) {
-            statusTextField.text = "Done!"
+            statusTextField.text = "Bitti!"
             statusProgressBar.progress = 0.0
         }
     }

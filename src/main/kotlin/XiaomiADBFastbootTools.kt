@@ -28,7 +28,7 @@ class XiaomiADBFastbootTools : Application() {
     @Throws(Exception::class)
     override fun start(stage: Stage) {
         stage.scene = Scene(FXMLLoader.load(javaClass.classLoader.getResource("Main.fxml")))
-        stage.title = "Xiaomi ADB/Fastboot Tools"
+        stage.title = "Xiaomi ADB/Fastboot Aracı"
         stage.icons.add(Image("icon.png"))
         stage.show()
     }

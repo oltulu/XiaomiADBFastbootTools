@@ -24,8 +24,8 @@ class AppAdderController : Initializable {
     @FXML
     private fun loadButtonPressed(event: ActionEvent) {
         FileChooser().apply {
-            extensionFilters.add(FileChooser.ExtensionFilter("Text File", "*"))
-            title = "Select a text file"
+            extensionFilters.add(FileChooser.ExtensionFilter("Metin Dosyası", "*"))
+            title = "Bir metin dosyası seçin"
             appTextArea.text = showOpenDialog((event.source as Node).scene.window)?.readText()
         }
     }
@@ -36,7 +36,7 @@ class AppAdderController : Initializable {
             Alert(Alert.AlertType.WARNING).apply {
                 initStyle(StageStyle.UTILITY)
                 isResizable = false
-                headerText = "Uninstalling apps which aren't listed by default may brick your device."
+                headerText = "Varsayılan olarak listelenmeyen uygulamaların kaldırılması cihazınızı engelleyebilir."
                 showAndWait()
             }
             GlobalScope.launch {

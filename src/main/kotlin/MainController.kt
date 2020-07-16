@@ -257,44 +257,44 @@ class MainController : Initializable {
             when (Device.mode) {
                 Mode.ADB -> {
                     tabPane.selectionModel.select(0)
-                    infoTextArea.text = "Serial number:\t\t${Device.serial}\n" +
-                            "Codename:\t\t${Device.codename}\n"
+                    infoTextArea.text = "Seri numarası:\t\t${Device.serial}\n" +
+                            "Kod Adı:\t\t${Device.codename}\n"
                     if (Device.bootloader)
                         infoTextArea.appendText("Bootloader:\t\tunlocked\n")
                     if (Device.camera2)
-                        infoTextArea.appendText("Camera2:\t\t\tenabled")
+                        infoTextArea.appendText("Kamera 2:\t\t\tenabled")
                     codenameTextField.text = Device.codename
                     dpiTextField.text = if (Device.dpi != -1)
                         Device.dpi.toString()
-                    else "ERROR"
+                    else "HATA"
                     widthTextField.text = if (Device.width != -1)
                         Device.width.toString()
-                    else "ERROR"
+                    else "HATA"
                     heightTextField.text = if (Device.height != -1)
                         Device.height.toString()
-                    else "ERROR"
+                    else "HATA"
 
                 }
                 Mode.RECOVERY -> {
                     tabPane.selectionModel.select(0)
-                    infoTextArea.text = "Serial number:\t\t${Device.serial}\n" +
-                            "Codename:\t\t${Device.codename}\n"
+                    infoTextArea.text = "Seri numarası:\t\t${Device.serial}\n" +
+                            "Kod Adı:\t\t${Device.codename}\n"
                     if (Device.bootloader)
                         infoTextArea.appendText("Bootloader:\t\tunlocked\n")
                     if (Device.camera2)
-                        infoTextArea.appendText("Camera2:\t\t\tenabled")
+                        infoTextArea.appendText("Kamera 2:\t\t\tenabled")
                     codenameTextField.text = Device.codename
                 }
                 Mode.FASTBOOT -> {
                     tabPane.selectionModel.select(1)
                     infoTextArea.text = "Serial number:\t\t${Device.serial}\n" +
-                            "Codename:\t\t${Device.codename}\n" +
+                            "Kod Adı:\t\t${Device.codename}\n" +
                             "Bootloader:\t\t"
                     if (Device.bootloader)
-                        infoTextArea.appendText("unlocked")
-                    else infoTextArea.appendText("locked")
+                        infoTextArea.appendText("kilitsiz")
+                    else infoTextArea.appendText("kilitli")
                     if (Device.anti != -1)
-                        infoTextArea.appendText("\nAnti version:\t\t${Device.anti}")
+                        infoTextArea.appendText("\nAnti Sürümü:\t\t${Device.anti}")
                     codenameTextField.text = Device.codename
                 }
                 else -> {
@@ -312,7 +312,7 @@ class MainController : Initializable {
         Device.mode = null
         setUI()
         withContext(Dispatchers.Main) {
-            outputTextArea.text = "Looking for devices...\n"
+            outputTextArea.text = "Telefon aranıyor...\n"
             progressIndicator.isVisible = true
         }
         do {
@@ -322,33 +322,33 @@ class MainController : Initializable {
                 when (Device.mode) {
                     Mode.ADB -> {
                         progressIndicator.isVisible = false
-                        outputTextArea.text = "Device connected in ADB mode!\n"
+                        outputTextArea.text = "ADB modunda bağlı cihaz!\n"
                         if (!Device.reinstaller || !Device.disabler)
-                            outputTextArea.appendText("Note:\nThis device isn't fully supported by the App Manager.\nAs a result, some modules have been disabled.\n\n")
+                            outputTextArea.appendText("Not:\nBu cihaz Uygulama Yöneticisi tarafından tam olarak desteklenmiyor.\nSonuç olarak, bazı modüller devre dışı bırakıldı.\n\n")
                         AppManager.readPotentialApps()
                         AppManager.createTables()
                     }
                     Mode.RECOVERY -> {
                         progressIndicator.isVisible = false
-                        outputTextArea.text = "Device connected in Recovery mode!\n\n"
+                        outputTextArea.text = "Kurtarma modunda bağlı cihaz!\n\n"
                     }
                     Mode.FASTBOOT -> {
                         progressIndicator.isVisible = false
-                        outputTextArea.text = "Device connected in Fastboot mode!\n\n"
+                        outputTextArea.text = "Fastboot modunda bağlı cihaz!\n\n"
                     }
                     Mode.AUTH -> {
                         if ("Unauthorised" !in outputTextArea.text)
                             outputTextArea.text =
-                                "Unauthorised device found!\nPlease allow USB debugging on the device!\n\n"
+                                "Yetkisiz cihaz bulundu!\nLütfen cihazda USB hata ayıklamasına izin verin!\n\n"
                     }
                     Mode.ADB_ERROR -> {
                         if ("loaded" !in outputTextArea.text)
                             outputTextArea.text =
-                                "ERROR: The device cannot be loaded!\nTry setting the USB configuration to data transfer!\n\n"
+                                "HATA: Cihaz yüklenemiyor!\nUSB yapılandırmasını veri aktarımına ayarlamayı deneyin!\n\n"
                     }
                     Mode.FASTBOOT_ERROR -> {
                         if ("loaded" !in outputTextArea.text)
-                            outputTextArea.text = "ERROR: The device cannot be loaded!\n\n"
+                            outputTextArea.text = "HATA: Cihaz yüklenemiyor!\n\n"
                     }
                     else -> {
                     }
@@ -387,12 +387,12 @@ class MainController : Initializable {
             "Clean install", "Clean install and lock", "Update"
         )
         branchComboBox.items.addAll(
-            "China Stable",
+            "Çin Stable",
             "EEA Stable",
             "Global Stable",
-            "India Stable",
-            "Indonesia Stable",
-            "Russia Stable"
+            "Hindistan Stable",
+            "Endonezya Stable",
+            "Rusya Stable"
         )
 
         uninstallerTableView.columns.setAll(uncheckTableColumn, unappTableColumn, unpackageTableColumn)
@@ -425,10 +425,10 @@ class MainController : Initializable {
                         val download = Hyperlink("Download")
                         Alert(AlertType.INFORMATION).apply {
                             initStyle(StageStyle.UTILITY)
-                            title = "New version available!"
+                            title = "Yeni sürüm mevcut!"
                             graphic = ImageView("mitu.png")
                             headerText =
-                                "Version $latest is available!"
+                                "$latest sürümü kullanılabilir!"
                             vb.alignment = Pos.CENTER
                             download.onAction = EventHandler {
                                 if (XiaomiADBFastbootTools.linux)
@@ -451,9 +451,9 @@ class MainController : Initializable {
                     val indicator = ProgressIndicator()
                     Alert(AlertType.WARNING).apply {
                         initStyle(StageStyle.UTILITY)
-                        title = "Downloading SDK Platform Tools..."
+                        title = "SDK Platform Araçlarını İndiriliyor..."
                         headerText =
-                            "ERROR: Cannot find ADB/Fastboot!\nDownloading the latest version..."
+                            "HATA: ADB/Fastboot bulunamıyor!\nEn son sürümü indiriliyor..."
                         hb.alignment = Pos.CENTER
                         label.font = Font(15.0)
                         indicator.setPrefSize(35.0, 35.0)
@@ -478,7 +478,7 @@ class MainController : Initializable {
                                 ).start(this)
                             }
                             withContext(Dispatchers.Main) {
-                                label.text = "Unzipping..."
+                                label.text = "Zip dosyası açılıyor..."
                             }
                             File(XiaomiADBFastbootTools.dir, "platform-tools").mkdirs()
                             ZipFile(file).use { zip ->
@@ -498,7 +498,7 @@ class MainController : Initializable {
                             file.delete()
                         }
                         hb.children.remove(indicator)
-                        label.text = "Done!"
+                        label.text = "Bitti!"
                     }
                 }
                 if (!Command.check(true))
@@ -506,7 +506,7 @@ class MainController : Initializable {
                         Alert(AlertType.ERROR).apply {
                             title = "Fatal Error"
                             headerText =
-                                "ERROR: Couldn't run ADB/Fastboot!"
+                                "HATA: ADB/Fastboot çalıştırılamadı!"
                             showAndWait()
                         }
                         Platform.exit()
@@ -529,8 +529,8 @@ class MainController : Initializable {
                 Command.exec(mutableListOf("adb", "shell", "setprop", "persist.camera.HAL3.enabled", "0"))
                 withContext(Dispatchers.Main) {
                     outputTextArea.text = if (!checkCamera2())
-                        "Camera2 disabled!"
-                    else "ERROR: Couldn't disable Camera2!"
+                        "Kamera 2 pasif!"
+                    else "HATA: Kamera 2 devre dışı bırakılamadı!"
                 }
             } else checkDevice()
         }
@@ -543,8 +543,8 @@ class MainController : Initializable {
                 Command.exec(mutableListOf("adb", "shell", "setprop", "persist.camera.HAL3.enabled", "1"))
                 withContext(Dispatchers.Main) {
                     outputTextArea.text = if (checkCamera2())
-                        "Camera2 enabled!"
-                    else "ERROR: Couldn't enable Camera2!"
+                        "Kamera 2 etkin!"
+                    else "HATA: Kamera 2 etkinleştirilemedi!"
                 }
             } else checkDevice()
         }
@@ -557,8 +557,8 @@ class MainController : Initializable {
                 Command.exec(mutableListOf("adb", "shell", "setprop", "persist.camera.eis.enable", "0"))
                 withContext(Dispatchers.Main) {
                     outputTextArea.text = if (!checkEIS())
-                        "EIS disabled!"
-                    else "ERROR: Couldn't disable EIS!"
+                        "EIS pasif!"
+                    else "HATA: EIS devre dışı bırakılamadı!"
                 }
             } else checkDevice()
         }
@@ -571,8 +571,8 @@ class MainController : Initializable {
                 Command.exec(mutableListOf("adb", "shell", "setprop", "persist.camera.eis.enable", "1"))
                 withContext(Dispatchers.Main) {
                     outputTextArea.text = if (checkEIS())
-                        "EIS enabled!"
-                    else "ERROR: Couldn't enable EIS!"
+                        "EIS aktif!"
+                    else "HATA: EIS etkinleştirilemedi!"
                 }
             } else checkDevice()
         }
@@ -587,7 +587,7 @@ class MainController : Initializable {
                     Stage().apply {
                         this.scene = scene
                         initModality(Modality.APPLICATION_MODAL)
-                        title = "File Explorer"
+                        title = "Dosya Yöneticisi"
                         isResizable = false
                         showAndWait()
                     }
@@ -606,13 +606,13 @@ class MainController : Initializable {
                     withContext(Dispatchers.Main) {
                         outputTextArea.text = when {
                             "permission" in attempt ->
-                                "ERROR: Please allow USB debugging (Security settings)!"
+                                "HATA: Lütfen USB hata ayıklamasına izin verin (Güvenlik ayarları)!"
                             "bad" in attempt ->
-                                "ERROR: Invalid value!"
+                                "HATA: Geçersiz değer!"
                             attempt.isEmpty() ->
-                                "Done!"
+                                "Bitti!"
                             else ->
-                                "ERROR: $attempt"
+                                "HATA: $attempt"
                         }
                     }
                 } else checkDevice()
@@ -627,11 +627,11 @@ class MainController : Initializable {
                 withContext(Dispatchers.Main) {
                     outputTextArea.text = when {
                         "permission" in attempt ->
-                            "ERROR: Please allow USB debugging (Security settings)!"
+                            "HATA: Lütfen USB hata ayıklamasına izin verin (Güvenlik ayarları)!"
                         attempt.isEmpty() ->
-                            "Done!"
+                            "Bitti!"
                         else ->
-                            "ERROR: $attempt"
+                            "HATA: $attempt"
                     }
                 }
             } else checkDevice()
@@ -656,13 +656,13 @@ class MainController : Initializable {
                     withContext(Dispatchers.Main) {
                         outputTextArea.text = when {
                             "permission" in attempt ->
-                                "ERROR: Please allow USB debugging (Security settings)!"
+                                "HATA: Lütfen USB hata ayıklamasına izin verin (Güvenlik ayarları)!"
                             "bad" in attempt ->
-                                "ERROR: Invalid value!"
+                                "HATA: Geçersiz değer!"
                             attempt.isEmpty() ->
-                                "Done!"
+                                "Bitti!"
                             else ->
-                                "ERROR: $attempt"
+                                "HATA: $attempt"
                         }
                     }
                 } else checkDevice()
@@ -677,11 +677,11 @@ class MainController : Initializable {
                 withContext(Dispatchers.Main) {
                     outputTextArea.text = when {
                         "permission" in attempt ->
-                            "ERROR: Please allow USB debugging (Security settings)!"
+                            "HATA: Lütfen USB hata ayıklamasına izin verin (Güvenlik ayarları)!"
                         attempt.isEmpty() ->
-                            "Done!"
+                            "Bitti!"
                         else ->
-                            "ERROR: $attempt"
+                            "HATA: $attempt"
                     }
                 }
             } else checkDevice()
@@ -736,8 +736,8 @@ class MainController : Initializable {
                         val props = Command.exec(mutableListOf("fastboot", "getvar", "all"))
                         withContext(Dispatchers.Main) {
                             FileChooser().apply {
-                                extensionFilters.add(FileChooser.ExtensionFilter("Text File", "*"))
-                                title = "Save properties"
+                                extensionFilters.add(FileChooser.ExtensionFilter("Metin Dosyası", "*"))
+                                title = "Özellikleri kaydet"
                                 showSaveDialog((event.target as MenuItem).parentPopup.ownerWindow)?.let {
                                     withContext(Dispatchers.IO) {
                                         try {
@@ -774,9 +774,9 @@ class MainController : Initializable {
                                     )
                                 )
                             ) {
-                                outputTextArea.text = "Couldn't disable anti-rollback safeguard!"
-                            } else outputTextArea.text = "Anti-rollback safeguard disabled!"
-                        } else outputTextArea.text = "Anti-rollback safeguard disabled!"
+                                outputTextArea.text = "Geri dönmeye karşı koruma önlemi devre dışı bırakılamadı!"
+                            } else outputTextArea.text = "Geri dönmeye karşı koruma devre dışı!"
+                        } else outputTextArea.text = "Geri dönmeye karşı koruma devre dışı"
                     }
                     delete()
                 }
@@ -787,8 +787,8 @@ class MainController : Initializable {
     @FXML
     private fun browseimageButtonPressed(event: ActionEvent) {
         FileChooser().apply {
-            extensionFilters.add(FileChooser.ExtensionFilter("Image File", "*.*"))
-            title = "Select an image"
+            extensionFilters.add(FileChooser.ExtensionFilter("Imaj Dosyası", "*.*"))
+            title = "Bir İmaj Seçin"
             image = showOpenDialog((event.source as Node).scene.window)
             imageLabel.text = image?.name
         }
@@ -819,17 +819,17 @@ class MainController : Initializable {
     @FXML
     private fun browseromButtonPressed(event: ActionEvent) {
         DirectoryChooser().apply {
-            title = "Select the root directory of a Fastboot ROM"
+            title = "Bir Fastboot ROM'un kök dizinini seçin"
             romLabel.text = "-"
             romDirectory = showDialog((event.source as Node).scene.window)?.let { dir ->
                 when {
                     ' ' in dir.absolutePath -> {
-                        outputTextArea.text = "ERROR: Space found in the pathname!"
+                        outputTextArea.text = "HATA: Yol adında boşluk bulundu!"
                         null
                     }
                     "images" in dir.list()!! -> {
                         romLabel.text = dir.name
-                        outputTextArea.text = "Fastboot ROM found!"
+                        outputTextArea.text = "Fastboot ROM bulundu!"
                         dir.listFiles()?.forEach {
                             if (!it.isDirectory)
                                 it.setExecutable(true, false)
@@ -837,7 +837,7 @@ class MainController : Initializable {
                         dir
                     }
                     else -> {
-                        outputTextArea.text = "ERROR: Fastboot ROM not found!"
+                        outputTextArea.text = "HATA: Fastboot ROM bulunamadı!"
                         null
                     }
                 }
@@ -893,7 +893,7 @@ class MainController : Initializable {
     private fun dataButtonPressed(event: ActionEvent) {
         GlobalScope.launch {
             if (Device.checkFastboot()) {
-                if (confirm("All your data will be gone.")) {
+                if (confirm("Tüm verileriniz kaybolacak.")) {
                     Command.execDisplayed(
                         mutableListOf("fastboot", "erase", "userdata")
                     )
@@ -906,7 +906,7 @@ class MainController : Initializable {
     private fun cachedataButtonPressed(event: ActionEvent) {
         GlobalScope.launch {
             if (Device.checkFastboot()) {
-                if (confirm("All your data will be gone.")) {
+                if (confirm("Tüm verileriniz kaybolacak.")) {
                     Command.execDisplayed(
                         mutableListOf("fastboot", "erase", "cache"),
                         mutableListOf("fastboot", "erase", "userdata")
@@ -920,7 +920,7 @@ class MainController : Initializable {
     private fun lockButtonPressed(event: ActionEvent) {
         GlobalScope.launch {
             if (Device.checkFastboot()) {
-                if (confirm("Your partitions must be intact in order to successfully lock the bootloader.")) {
+                if (confirm("Önyükleyiciyi başarıyla kilitlemek için bölümlerinizin sağlam olması gerekir.")) {
                     Command.execDisplayed(mutableListOf("fastboot", "oem", "lock"))
                 }
             } else checkDevice()
@@ -941,7 +941,7 @@ class MainController : Initializable {
             if (codenameTextField.text.isNotBlank()) {
                 GlobalScope.launch {
                     withContext(Dispatchers.Main) {
-                        outputTextArea.appendText("\nLooking for $it...\n")
+                        outputTextArea.appendText("\n$it için bakılıyor...\n")
                         progressIndicator.isVisible = true
                     }
                     val link = getLink(it, codenameTextField.text.trim())
@@ -949,12 +949,12 @@ class MainController : Initializable {
                         if (link != null && "bigota" in link) {
                             versionLabel.text = link.substringAfter(".com/").substringBefore('/')
                             progressIndicator.isVisible = false
-                            outputTextArea.appendText("$link\nLink copied to clipboard!\n")
+                            outputTextArea.appendText("$link\nLink kopyalandı!\n")
                             Toolkit.getDefaultToolkit().systemClipboard.setContents(StringSelection(link), null)
                         } else {
                             versionLabel.text = "-"
                             progressIndicator.isVisible = false
-                            outputTextArea.appendText("Link not found!\n")
+                            outputTextArea.appendText("Bağlantı bulunamadı!\n")
                         }
                     }
                 }
@@ -967,22 +967,22 @@ class MainController : Initializable {
         branchComboBox.value?.let { branch ->
             if (codenameTextField.text.isNotBlank()) {
                 DirectoryChooser().apply {
-                    title = "Select the download location of the Fastboot ROM"
+                    title = "Fastboot ROM'un indirme konumunu seçin"
                     showDialog((event.source as Node).scene.window)?.let {
-                        outputTextArea.appendText("Looking for $branch...\n")
+                        outputTextArea.appendText("$branch için bakılıyor...\n")
                         progressIndicator.isVisible = true
                         GlobalScope.launch {
                             val link = getLink(branch, codenameTextField.text.trim())
                             if (link != null && "bigota" in link) {
                                 withContext(Dispatchers.Main) {
                                     versionLabel.text = link.substringAfter(".com/").substringBefore('/')
-                                    outputTextArea.appendText("Starting download...\n")
+                                    outputTextArea.appendText("İndirme başlatılıyor...\n")
                                     downloaderPane.isDisable = true
                                 }
                                 Downloader(link, File(it, link.substringAfterLast('/')), downloadProgress).start(this)
                                 withContext(Dispatchers.Main) {
                                     progressIndicator.isVisible = false
-                                    outputTextArea.appendText("Download complete!\n\n")
+                                    outputTextArea.appendText("İndirme tamamlandı!\n\n")
                                     downloadProgress.text = "100.0%"
                                     downloaderPane.isDisable = false
                                 }
@@ -990,7 +990,7 @@ class MainController : Initializable {
                                 withContext(Dispatchers.Main) {
                                     versionLabel.text = "-"
                                     progressIndicator.isVisible = false
-                                    outputTextArea.appendText("Link not found!\n\n")
+                                    outputTextArea.appendText("Bağlantı bulunamadı!\n\n")
                                 }
                             }
                         }
@@ -1200,10 +1200,10 @@ class MainController : Initializable {
     private fun aboutMenuItemPressed(event: ActionEvent) {
         Alert(AlertType.INFORMATION).apply {
             initStyle(StageStyle.UTILITY)
-            title = "About"
+            title = "Hakkında"
             graphic = ImageView("icon.png")
             headerText =
-                "Xiaomi ADB/Fastboot Tools\nVersion ${XiaomiADBFastbootTools.version}\nCreated by Szaki\n\n" +
+                "Xiaomi ADB/Fastboot Aracı\nSürüm ${XiaomiADBFastbootTools.version}\nSzaki tarafından yazıldı\n\n" +
                         "SDK Platform Tools\n${runBlocking {
                             Command.exec(
                                 mutableListOf(
@@ -1214,21 +1214,21 @@ class MainController : Initializable {
                         }}"
             val vb = VBox()
             vb.alignment = Pos.CENTER
-            val discord = Hyperlink("Xiaomi Community on Discord")
+            val discord = Hyperlink("Xiaomi Topluluk Discord")
             discord.onAction = EventHandler {
                 if (XiaomiADBFastbootTools.linux)
                     Runtime.getRuntime().exec("xdg-open https://discord.gg/xiaomi")
                 else Desktop.getDesktop().browse(URI("https://discord.gg/xiaomi"))
             }
             discord.font = Font(15.0)
-            val twitter = Hyperlink("Szaki on Twitter")
+            val twitter = Hyperlink("Szaki Twitter Adresi")
             twitter.onAction = EventHandler {
                 if (XiaomiADBFastbootTools.linux)
                     Runtime.getRuntime().exec("xdg-open https://twitter.com/Szaki_EU")
                 else Desktop.getDesktop().browse(URI("https://twitter.com/Szaki_EU"))
             }
             twitter.font = Font(15.0)
-            val github = Hyperlink("Repository on GitHub")
+            val github = Hyperlink("GitHub Kaynak Kodu")
             github.onAction = EventHandler {
                 if (XiaomiADBFastbootTools.linux)
                     Runtime.getRuntime().exec("xdg-open https://github.com/Szaki/XiaomiADBFastbootTools")

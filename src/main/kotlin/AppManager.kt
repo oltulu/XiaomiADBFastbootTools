@@ -262,8 +262,8 @@ object AppManager {
                 else "Failure\n"
                 withContext(Dispatchers.Main) {
                     outputTextArea.apply {
-                        appendText("App: ${it.appnameProperty().get()}\n")
-                        appendText("Package: $pkg\n")
+                        appendText("Uygulama: ${it.appnameProperty().get()}\n")
+                        appendText("Paket: $pkg\n")
                         appendText("Result: $output\n")
                     }
                     progress.progress += 1.0 / n
@@ -271,7 +271,7 @@ object AppManager {
             }
         }
         withContext(Dispatchers.Main) {
-            outputTextArea.appendText("Done!")
+            outputTextArea.appendText("Bitti!")
             progress.progress = 0.0
             progressInd.isVisible = false
             createTables()

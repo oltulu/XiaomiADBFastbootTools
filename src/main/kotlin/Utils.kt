@@ -49,9 +49,9 @@ suspend fun Exception.alert() {
     withContext(Dispatchers.Main) {
         Alert(Alert.AlertType.ERROR).apply {
             initStyle(StageStyle.UTILITY)
-            title = "ERROR"
+            title = "HATA"
             headerText =
-                "Unexpected exception!"
+                "Beklenmedik durum!"
             val vb = VBox()
             vb.alignment = Pos.CENTER
             val textArea = TextArea(stringWriter.toString()).apply {
@@ -73,9 +73,9 @@ suspend fun confirm(msg: String = ""): Boolean = withContext(Dispatchers.Main) {
     Alert(Alert.AlertType.CONFIRMATION).run {
         initStyle(StageStyle.UTILITY)
         isResizable = false
-        headerText = "${msg.trim()}\nAre you sure you want to proceed?".trim()
-        val yes = ButtonType("Yes")
-        val no = ButtonType("No", ButtonBar.ButtonData.CANCEL_CLOSE)
+        headerText = "${msg.trim()}\nDevam etmek istediğinizden emin misiniz?".trim()
+        val yes = ButtonType("Evet")
+        val no = ButtonType("Hayır", ButtonBar.ButtonData.CANCEL_CLOSE)
         buttonTypes.setAll(yes, no)
         val result = showAndWait()
         result.get() == yes
@@ -98,11 +98,11 @@ fun getLink(version: String, codename: String): String? {
         }
     }
     when (version) {
-        "China Stable" ->
+        "Çin Stable" ->
             return getLocation(codename, "", "cn")
         "EEA Stable" ->
             return getLocation(codename, "_eea_global", "eea")
-        "Russia Stable" -> {
+        "Rusya Stable" -> {
             arrayOf("ru", "global").forEach {
                 val link = getLocation(codename, "_ru_global", it)
                 if (link != null && "bigota" in link)
@@ -110,9 +110,9 @@ fun getLink(version: String, codename: String): String? {
             }
             return null
         }
-        "Indonesia Stable" ->
+        "Endonezya Stable" ->
             return getLocation(codename, "_id_global", "global")
-        "India Stable" -> {
+        "Hindistan Stable" -> {
             arrayOf("in", "global").forEach {
                 for (ending in arrayOf("_in_global", "_india_global", "_global")) {
                     if (it == "global" && ending == "_global")
