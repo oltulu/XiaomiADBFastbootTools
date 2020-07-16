@@ -36,27 +36,27 @@
          <children>
             <FlowPane hgap="13.0" layoutX="132.0" layoutY="-24.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <Button fx:id="pushButton" mnemonicParsing="false" onAction="#pushButtonPressed" text="Push to device">
+                  <Button fx:id="pushButton" mnemonicParsing="false" onAction="#pushButtonPressed" text="Telefona Aktar">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Button>
-                  <Button fx:id="pullButton" mnemonicParsing="false" onAction="#pullButtonPressed" text="Pull from device">
+                  <Button fx:id="pullButton" mnemonicParsing="false" onAction="#pullButtonPressed" text="Telefondan Aktar">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Button>
-                  <Button fx:id="newFolderButton" mnemonicParsing="false" onAction="#newFolderButtonPressed" text="New Folder">
+                  <Button fx:id="newFolderButton" mnemonicParsing="false" onAction="#newFolderButtonPressed" text="Yeni Klasör">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Button>
-                  <Button fx:id="renameButton" mnemonicParsing="false" onAction="#renameButtonPressed" text="Rename">
+                  <Button fx:id="renameButton" mnemonicParsing="false" onAction="#renameButtonPressed" text="Yeniden Adlandır">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Button>
-                  <Button fx:id="deleteButton" mnemonicParsing="false" onAction="#deleteButtonPressed" text="Delete">
+                  <Button fx:id="deleteButton" mnemonicParsing="false" onAction="#deleteButtonPressed" text="Sil">
                      <font>
                         <Font size="16.0" />
                      </font>

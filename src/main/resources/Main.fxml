@@ -30,15 +30,15 @@
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
-        <Menu fx:id="optionsMenu" mnemonicParsing="false" text="Options">
+        <Menu fx:id="optionsMenu" mnemonicParsing="false" text="Ayarlar">
           <items>
-                  <MenuItem fx:id="reloadMenuItem" disable="true" mnemonicParsing="false" onAction="#reloadMenuItemPressed" text="Reload device" />
-            <MenuItem fx:id="aboutMenuItem" mnemonicParsing="false" onAction="#aboutMenuItemPressed" text="About" />
+                  <MenuItem fx:id="reloadMenuItem" disable="true" mnemonicParsing="false" onAction="#reloadMenuItemPressed" text="Telefonu Yeniden Yükle" />
+            <MenuItem fx:id="aboutMenuItem" mnemonicParsing="false" onAction="#aboutMenuItemPressed" text="Hakkında" />
           </items>
         </Menu>
-            <Menu fx:id="deviceMenu" disable="true" mnemonicParsing="false" text="Device">
+            <Menu fx:id="deviceMenu" disable="true" mnemonicParsing="false" text="Telefon">
               <items>
-                  <Menu fx:id="rebootMenu" mnemonicParsing="false" text="Reboot to">
+                  <Menu fx:id="rebootMenu" mnemonicParsing="false" text="Yeniden Başlat...">
                     <items>
                       <MenuItem fx:id="systemMenuItem" mnemonicParsing="false" onAction="#systemMenuItemPressed" text="System" />
                         <MenuItem fx:id="recoveryMenuItem" mnemonicParsing="false" onAction="#recoveryMenuItemPressed" text="Recovery" />
@@ -46,14 +46,14 @@
                         <MenuItem fx:id="edlMenuItem" mnemonicParsing="false" onAction="#edlMenuItemPressed" text="EDL" />
                     </items>
                   </Menu>
-                <MenuItem fx:id="readPropertiesMenuItem" mnemonicParsing="false" onAction="#readPropertiesMenuItemPressed" text="Read properties" />
-                  <MenuItem fx:id="savePropertiesMenuItem" mnemonicParsing="false" onAction="#savePropertiesMenuItemPressed" text="Save properties" />
+                <MenuItem fx:id="readPropertiesMenuItem" mnemonicParsing="false" onAction="#readPropertiesMenuItemPressed" text="Özellikleri Oku" />
+                  <MenuItem fx:id="savePropertiesMenuItem" mnemonicParsing="false" onAction="#savePropertiesMenuItemPressed" text="Özellikleri Kaydet" />
               </items>
             </Menu>
-            <Menu fx:id="appManagerMenu" disable="true" mnemonicParsing="false" text="App Manager">
+            <Menu fx:id="appManagerMenu" disable="true" mnemonicParsing="false" text="Uygulama Yöneticisi">
               <items>
-                  <CheckMenuItem fx:id="secondSpaceButton" mnemonicParsing="false" onAction="#secondSpaceButtonPressed" text="Second Space" />
-                  <MenuItem fx:id="addAppsButton" mnemonicParsing="false" onAction="#addAppsButtonPressed" text="Add apps" />
+                  <CheckMenuItem fx:id="secondSpaceButton" mnemonicParsing="false" onAction="#secondSpaceButtonPressed" text="İkinci Boşluk" />
+                  <MenuItem fx:id="addAppsButton" mnemonicParsing="false" onAction="#addAppsButtonPressed" text="Uygulama Ekle" />
               </items>
             </Menu>
       </menus>
@@ -62,7 +62,7 @@
          <children>
             <VBox maxWidth="-Infinity" minWidth="-Infinity" prefWidth="400.0" HBox.hgrow="NEVER">
                <children>
-                  <TitledPane animated="false" collapsible="false" prefHeight="175.0" text="Device Info">
+                  <TitledPane animated="false" collapsible="false" prefHeight="175.0" text="Telefon Bilgisi">
                     <content>
                       <AnchorPane minHeight="0.0" minWidth="0.0">
                            <children>
@@ -78,7 +78,7 @@
                         <Font size="15.0" />
                      </font>
                   </TitledPane>
-                  <TitledPane animated="false" collapsible="false" prefHeight="516.0" text="Status">
+                  <TitledPane animated="false" collapsible="false" prefHeight="516.0" text="Durum">
                      <content>
                         <GridPane>
                            <columnConstraints>
@@ -122,7 +122,7 @@
                                  <children>
                                     <TabPane fx:id="appManagerPane" disable="true" GridPane.rowSpan="4">
                                        <tabs>
-                                          <Tab fx:id="uninstallerTab" closable="false" text="Uninstaller">
+                                          <Tab fx:id="uninstallerTab" closable="false" text="Uygulama Kaldırıcı">
                                              <content>
                                               <AnchorPane minHeight="0.0" minWidth="0.0">
                                                    <children>
@@ -139,11 +139,11 @@
                                                             <TableView fx:id="uninstallerTableView" editable="true" GridPane.columnSpan="2">
                                                               <columns>
                                                                 <TableColumn fx:id="uncheckTableColumn" prefWidth="35.0" />
-                                                                <TableColumn fx:id="unappTableColumn" editable="false" prefWidth="205.0" text="App name" />
-                                                                  <TableColumn fx:id="unpackageTableColumn" editable="false" prefWidth="310.0" text="Package name" />
+                                                                <TableColumn fx:id="unappTableColumn" editable="false" prefWidth="205.0" text="Uygulama Adı" />
+                                                                  <TableColumn fx:id="unpackageTableColumn" editable="false" prefWidth="310.0" text="Paket adı" />
                                                               </columns>
                                                             </TableView>
-                                                            <Button fx:id="uninstallButton" mnemonicParsing="false" onAction="#uninstallButtonPressed" prefHeight="35.0" prefWidth="570.0" text="Uninstall!" textFill="RED" GridPane.columnSpan="2" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
+                                                            <Button fx:id="uninstallButton" mnemonicParsing="false" onAction="#uninstallButtonPressed" prefHeight="35.0" prefWidth="570.0" text="Kaldır!" textFill="RED" GridPane.columnSpan="2" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
                                                                <font>
                                                                   <Font size="16.0" />
                                                                </font>
@@ -154,7 +154,7 @@
                                                 </AnchorPane>
                                              </content>
                                           </Tab>
-                                          <Tab fx:id="reinstallerTab" closable="false" text="Reinstaller">
+                                          <Tab fx:id="reinstallerTab" closable="false" text="Yeniden Kurucu">
                                              <content>
                                                 <AnchorPane minHeight="0.0" minWidth="0.0">
                                                    <children>
@@ -171,11 +171,11 @@
                                                             <TableView fx:id="reinstallerTableView" editable="true" GridPane.columnSpan="2">
                                                                <columns>
                                                                   <TableColumn fx:id="recheckTableColumn" prefWidth="35.0" />
-                                                                  <TableColumn fx:id="reappTableColumn" editable="false" prefWidth="205.0" text="App name" />
-                                                                  <TableColumn fx:id="repackageTableColumn" editable="false" prefWidth="310.0" text="Package name" />
+                                                                  <TableColumn fx:id="reappTableColumn" editable="false" prefWidth="205.0" text="Uygulama Adı" />
+                                                                  <TableColumn fx:id="repackageTableColumn" editable="false" prefWidth="310.0" text="Paket Adı" />
                                                                </columns>
                                                             </TableView>
-                                                            <Button fx:id="reinstallButton" mnemonicParsing="false" onAction="#reinstallButtonPressed" prefHeight="35.0" prefWidth="570.0" text="Reinstall!" textFill="#00c800" GridPane.columnSpan="2" GridPane.rowIndex="1">
+                                                            <Button fx:id="reinstallButton" mnemonicParsing="false" onAction="#reinstallButtonPressed" prefHeight="35.0" prefWidth="570.0" text="Tekrar Kur!" textFill="#00c800" GridPane.columnSpan="2" GridPane.rowIndex="1">
                                                                <font>
                                                                   <Font size="16.0" />
                                                                </font>
@@ -186,7 +186,7 @@
                                                 </AnchorPane>
                                              </content>
                                           </Tab>
-                                          <Tab fx:id="disablerTab" closable="false" text="Disabler">
+                                          <Tab fx:id="disablerTab" closable="false" text="Pasif Yap">
                                              <content>
                                                 <AnchorPane minHeight="0.0" minWidth="0.0">
                                                    <children>
@@ -203,11 +203,11 @@
                                                             <TableView fx:id="disablerTableView" editable="true" GridPane.columnSpan="2">
                                                                <columns>
                                                                   <TableColumn fx:id="discheckTableColumn" prefWidth="35.0" />
-                                                                  <TableColumn fx:id="disappTableColumn" editable="false" prefWidth="205.0" text="App name" />
-                                                                  <TableColumn fx:id="dispackageTableColumn" editable="false" prefWidth="310.0" text="Package name" />
+                                                                  <TableColumn fx:id="disappTableColumn" editable="false" prefWidth="205.0" text="Uygulama Adı" />
+                                                                  <TableColumn fx:id="dispackageTableColumn" editable="false" prefWidth="310.0" text="Uygulama Adı" />
                                                                </columns>
                                                             </TableView>
-                                                            <Button fx:id="disableButton" mnemonicParsing="false" onAction="#disableButtonPressed" prefHeight="35.0" prefWidth="570.0" text="Disable!" textFill="RED" GridPane.columnSpan="2" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
+                                                            <Button fx:id="disableButton" mnemonicParsing="false" onAction="#disableButtonPressed" prefHeight="35.0" prefWidth="570.0" text="Pasif!" textFill="RED" GridPane.columnSpan="2" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
                                                                <font>
                                                                   <Font size="16.0" />
                                                                </font>
@@ -218,7 +218,7 @@
                                                 </AnchorPane>
                                              </content>
                                           </Tab>
-                                          <Tab fx:id="enablerTab" closable="false" text="Enabler">
+                                          <Tab fx:id="enablerTab" closable="false" text="Aktif Yap">
                                              <content>
                                                 <AnchorPane minHeight="0.0" minWidth="0.0">
                                                    <children>
@@ -235,11 +235,11 @@
                                                             <TableView fx:id="enablerTableView" editable="true" GridPane.columnSpan="2">
                                                                <columns>
                                                                   <TableColumn fx:id="encheckTableColumn" prefWidth="35.0" />
-                                                                  <TableColumn fx:id="enappTableColumn" editable="false" prefWidth="205.0" text="App name" />
-                                                                  <TableColumn fx:id="enpackageTableColumn" editable="false" prefWidth="310.0" text="Package name" />
+                                                                  <TableColumn fx:id="enappTableColumn" editable="false" prefWidth="205.0" text="Uygulama Adı" />
+                                                                  <TableColumn fx:id="enpackageTableColumn" editable="false" prefWidth="310.0" text="Paket Adı" />
                                                                </columns>
                                                             </TableView>
-                                                            <Button fx:id="enableButton" mnemonicParsing="false" onAction="#enableButtonPressed" prefHeight="35.0" prefWidth="570.0" text="Enable!" textFill="#00c800" GridPane.columnSpan="2" GridPane.rowIndex="1">
+                                                            <Button fx:id="enableButton" mnemonicParsing="false" onAction="#enableButtonPressed" prefHeight="35.0" prefWidth="570.0" text="Aktif!" textFill="#00c800" GridPane.columnSpan="2" GridPane.rowIndex="1">
                                                                <font>
                                                                   <Font size="16.0" />
                                                                </font>
@@ -254,26 +254,26 @@
                                     </TabPane>
                                     <FlowPane alignment="TOP_RIGHT" columnHalignment="CENTER" vgap="10.0" GridPane.columnIndex="1">
                                        <children>
-                                          <TitledPane fx:id="camera2Pane" animated="false" collapsible="false" disable="true" prefWidth="220.0" text="Camera2 (TWRP)">
+                                          <TitledPane fx:id="camera2Pane" animated="false" collapsible="false" disable="true" prefWidth="220.0" text="Kamera 2 (TWRP)">
                                             <content>
                                               <AnchorPane minHeight="0.0" minWidth="0.0">
                                                    <children>
-                                                      <Button fx:id="enableCamera2Button" layoutX="64.0" layoutY="65.0" mnemonicParsing="false" onAction="#enableCamera2ButtonPressed" text="Enable Camera2" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                      <Button fx:id="enableCamera2Button" layoutX="64.0" layoutY="65.0" mnemonicParsing="false" onAction="#enableCamera2ButtonPressed" text="Kamera 2 Aktif" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                          <font>
                                                             <Font size="15.0" />
                                                          </font>
                                                       </Button>
-                                                      <Button fx:id="disableCamera2Button" layoutX="62.0" layoutY="115.0" mnemonicParsing="false" onAction="#disableCamera2ButtonPressed" text="Disable Camera2" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="36.0">
+                                                      <Button fx:id="disableCamera2Button" layoutX="62.0" layoutY="115.0" mnemonicParsing="false" onAction="#disableCamera2ButtonPressed" text="Kamera 2 Pasif" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="36.0">
                                                          <font>
                                                             <Font size="15.0" />
                                                          </font>
                                                       </Button>
-                                                      <Button fx:id="enableEISButton" layoutX="14.0" layoutY="145.0" mnemonicParsing="false" onAction="#enableEISButtonPressed" text="Enable EIS" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="72.0">
+                                                      <Button fx:id="enableEISButton" layoutX="14.0" layoutY="145.0" mnemonicParsing="false" onAction="#enableEISButtonPressed" text="EIS Aktif" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="72.0">
                                                          <font>
                                                             <Font size="15.0" />
                                                          </font>
                                                       </Button>
-                                                      <Button fx:id="disableEISButton" layoutX="73.0" layoutY="203.0" mnemonicParsing="false" onAction="#disableEISButtonPressed" text="Disable EIS" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="108.0">
+                                                      <Button fx:id="disableEISButton" layoutX="73.0" layoutY="203.0" mnemonicParsing="false" onAction="#disableEISButtonPressed" text="EIS Pasif" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="108.0">
                                                          <font>
                                                             <Font size="15.0" />
                                                          </font>
@@ -285,11 +285,11 @@
                                                 <Font size="15.0" />
                                              </font>
                                           </TitledPane>
-                                          <TitledPane fx:id="fileExplorerPane" collapsible="false" disable="true" prefWidth="220.0" text="File Explorer">
+                                          <TitledPane fx:id="fileExplorerPane" collapsible="false" disable="true" prefWidth="220.0" text="Dosya Yöneticisi">
                                              <content>
                                                 <AnchorPane>
                                                    <children>
-                                                      <Button fx:id="openButton" mnemonicParsing="false" onAction="#openButtonPressed" text="Open" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                      <Button fx:id="openButton" mnemonicParsing="false" onAction="#openButtonPressed" text="Aç" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                          <font>
                                                             <Font size="15.0" />
                                                          </font>
@@ -301,11 +301,11 @@
                                                 <Font size="15.0" />
                                              </font>
                                           </TitledPane>
-                                          <TitledPane fx:id="dpiPane" animated="false" collapsible="false" disable="true" prefWidth="220.0" text="Screen density">
+                                          <TitledPane fx:id="dpiPane" animated="false" collapsible="false" disable="true" prefWidth="220.0" text="Ekran Yoğunluğu">
                                             <content>
                                               <AnchorPane minHeight="0.0" minWidth="0.0">
                                                    <children>
-                                                      <Label layoutX="14.0" layoutY="15.0" text="Value:" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                      <Label layoutX="14.0" layoutY="15.0" text="Değer:" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                          <font>
                                                             <Font size="15.0" />
                                                          </font>
@@ -320,12 +320,12 @@
                                                             <Font size="15.0" />
                                                          </font>
                                                       </Label>
-                                                      <Button fx:id="applyDpiButton" layoutX="56.0" layoutY="69.0" mnemonicParsing="false" onAction="#applyDpiButtonPressed" text="Apply" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="33.0">
+                                                      <Button fx:id="applyDpiButton" layoutX="56.0" layoutY="69.0" mnemonicParsing="false" onAction="#applyDpiButtonPressed" text="Uygula" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="33.0">
                                                          <font>
                                                             <Font size="15.0" />
                                                          </font>
                                                       </Button>
-                                                      <Button fx:id="resetDpiButton" mnemonicParsing="false" onAction="#resetDpiButtonPressed" text="Reset to default" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="69.0">
+                                                      <Button fx:id="resetDpiButton" mnemonicParsing="false" onAction="#resetDpiButtonPressed" text="Normal Ayarlara Dön" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="69.0">
                                                          <font>
                                                             <Font size="15.0" />
                                                          </font>
@@ -337,11 +337,11 @@
                                                 <Font size="15.0" />
                                              </font>
                                           </TitledPane>
-                                          <TitledPane fx:id="resolutionPane" animated="false" collapsible="false" disable="true" prefWidth="220.0" text="Screen resolution">
+                                          <TitledPane fx:id="resolutionPane" animated="false" collapsible="false" disable="true" prefWidth="220.0" text="Ekran Çözünürlüğü">
                                              <content>
                                                 <AnchorPane minHeight="0.0" minWidth="0.0">
                                                    <children>
-                                                      <Label layoutX="14.0" layoutY="15.0" text="Width:" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                      <Label layoutX="14.0" layoutY="15.0" text="Genişlik:" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                          <font>
                                                             <Font size="15.0" />
                                                          </font>
@@ -356,17 +356,17 @@
                                                             <Font size="15.0" />
                                                          </font>
                                                       </Label>
-                                                      <Button fx:id="applyResButton" layoutX="56.0" layoutY="69.0" mnemonicParsing="false" onAction="#applyResButtonPressed" text="Apply" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="69.0">
+                                                      <Button fx:id="applyResButton" layoutX="56.0" layoutY="69.0" mnemonicParsing="false" onAction="#applyResButtonPressed" text="Uygula" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="69.0">
                                                          <font>
                                                             <Font size="15.0" />
                                                          </font>
                                                       </Button>
-                                                      <Button fx:id="resetResButton" mnemonicParsing="false" onAction="#resetResButtonPressed" text="Reset to default" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="105.0">
+                                                      <Button fx:id="resetResButton" mnemonicParsing="false" onAction="#resetResButtonPressed" text="Varsayılana Dön" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="105.0">
                                                          <font>
                                                             <Font size="15.0" />
                                                          </font>
                                                       </Button>
-                                                      <Label layoutX="22.0" layoutY="54.0" text="Height:" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="36.0">
+                                                      <Label layoutX="22.0" layoutY="54.0" text="Yükseklik:" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="36.0">
                                                          <font>
                                                             <Font size="15.0" />
                                                          </font>
@@ -411,7 +411,7 @@
                                     <RowConstraints fillHeight="false" minHeight="10.0" valignment="TOP" vgrow="ALWAYS" />
                                  </rowConstraints>
                                  <children>
-                                    <TitledPane fx:id="flasherPane" animated="false" collapsible="false" disable="true" text="Flasher" GridPane.columnSpan="2">
+                                    <TitledPane fx:id="flasherPane" animated="false" collapsible="false" disable="true" text="ROM Yazıcı" GridPane.columnSpan="2">
                                       <content>
                                         <AnchorPane minHeight="0.0" minWidth="0.0">
                                              <children>
@@ -429,12 +429,12 @@
                                                    <children>
                                                       <FlowPane hgap="130.0">
                                                          <children>
-                                                            <Button fx:id="antirbButton" mnemonicParsing="false" onAction="#antirbButtonPressed" text="Disable anti-rollback safeguard">
+                                                            <Button fx:id="antirbButton" mnemonicParsing="false" onAction="#antirbButtonPressed" text="Geri Alma Koruması Devre Dışı">
                                                                <font>
                                                                   <Font size="15.0" />
                                                                </font>
                                                             </Button>
-                                                            <CheckBox fx:id="autobootCheckBox" mnemonicParsing="false" text="Autoboot to Recovery after it's flashed">
+                                                            <CheckBox fx:id="autobootCheckBox" mnemonicParsing="false" text="Flashtan sonra recovery otomatik başlat">
                                                                <font>
                                                                   <Font size="15.0" />
                                                                </font>
@@ -443,18 +443,18 @@
                                                       </FlowPane>
                                                       <FlowPane hgap="25.0" GridPane.rowIndex="1">
                                                          <children>
-                                                            <Button fx:id="browseimageButton" mnemonicParsing="false" onAction="#browseimageButtonPressed" prefWidth="160.0" text="Select image">
+                                                            <Button fx:id="browseimageButton" mnemonicParsing="false" onAction="#browseimageButtonPressed" prefWidth="160.0" text="İmaj seç">
                                                                <font>
                                                                   <Font size="15.0" />
                                                                </font>
                                                             </Button>
-                                                            <ComboBox fx:id="partitionComboBox" editable="true" prefWidth="175.0" promptText="Partition" />
-                                                            <Button fx:id="flashimageButton" mnemonicParsing="false" onAction="#flashimageButtonPressed" prefWidth="160.0" text="Flash image" textFill="RED">
+                                                            <ComboBox fx:id="partitionComboBox" editable="true" prefWidth="175.0" promptText="Bölümleme" />
+                                                            <Button fx:id="flashimageButton" mnemonicParsing="false" onAction="#flashimageButtonPressed" prefWidth="160.0" text="İmaj Flashla" textFill="RED">
                                                                <font>
                                                                   <Font size="15.0" />
                                                                </font>
                                                             </Button>
-                                                            <Button fx:id="bootButton" mnemonicParsing="false" onAction="#bootButtonPressed" prefWidth="160.0" text="Boot to image">
+                                                            <Button fx:id="bootButton" mnemonicParsing="false" onAction="#bootButtonPressed" prefWidth="160.0" text="İmaja Önyükle">
                                                                <font>
                                                                   <Font size="15.0" />
                                                                </font>
@@ -463,7 +463,7 @@
                                                       </FlowPane>
                                                       <FlowPane hgap="10.0" GridPane.rowIndex="2">
                                                          <children>
-                                                            <Label text="Image:">
+                                                            <Label text="Imaj:">
                                                                <font>
                                                                   <Font size="15.0" />
                                                                </font>
@@ -491,13 +491,13 @@
                                                       </FlowPane>
                                                       <FlowPane hgap="25.0" GridPane.rowIndex="3">
                                                          <children>
-                                                            <Button fx:id="browseromButton" mnemonicParsing="false" onAction="#browseromButtonPressed" prefWidth="160.0" text="Select ROM folder">
+                                                            <Button fx:id="browseromButton" mnemonicParsing="false" onAction="#browseromButtonPressed" prefWidth="160.0" text="SROM klasörü seç">
                                                                <font>
                                                                   <Font size="15.0" />
                                                                </font>
                                                             </Button>
-                                                            <ComboBox fx:id="scriptComboBox" prefWidth="175.0" promptText="Method" />
-                                                            <Button fx:id="flashromButton" mnemonicParsing="false" onAction="#flashromButtonPressed" prefWidth="160.0" text="Flash ROM" textFill="RED">
+                                                            <ComboBox fx:id="scriptComboBox" prefWidth="175.0" promptText="Metod" />
+                                                            <Button fx:id="flashromButton" mnemonicParsing="false" onAction="#flashromButtonPressed" prefWidth="160.0" text="ROM Flashla" textFill="RED">
                                                                <font>
                                                                   <Font size="15.0" />
                                                                </font>
@@ -513,21 +513,21 @@
                                           <Font size="15.0" />
                                        </font>
                                     </TitledPane>
-                                    <TitledPane fx:id="wiperPane" animated="false" collapsible="false" disable="true" text="Wiper" GridPane.rowIndex="1">
+                                    <TitledPane fx:id="wiperPane" animated="false" collapsible="false" disable="true" text="Temizleyici" GridPane.rowIndex="1">
                                       <content>
                                         <AnchorPane minHeight="0.0" minWidth="0.0">
                                              <children>
-                                                <Button fx:id="cacheButton" mnemonicParsing="false" onAction="#cacheButtonPressed" text="Wipe cache" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                <Button fx:id="cacheButton" mnemonicParsing="false" onAction="#cacheButtonPressed" text="Önbelleği Sil" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                    <font>
                                                       <Font size="17.0" />
                                                    </font>
                                                 </Button>
-                                                <Button fx:id="dataButton" mnemonicParsing="false" onAction="#dataButtonPressed" text="Wipe userdata" textFill="RED" AnchorPane.leftAnchor="140.0" AnchorPane.topAnchor="0.0">
+                                                <Button fx:id="dataButton" mnemonicParsing="false" onAction="#dataButtonPressed" text="Kul. Verilerini Sil" textFill="RED" AnchorPane.leftAnchor="140.0" AnchorPane.topAnchor="0.0">
                                                    <font>
                                                       <Font size="17.0" />
                                                    </font>
                                                 </Button>
-                                                <Button fx:id="cachedataButton" mnemonicParsing="false" onAction="#cachedataButtonPressed" text="Wipe cache and userdata" textFill="RED" AnchorPane.leftAnchor="305.0" AnchorPane.topAnchor="0.0">
+                                                <Button fx:id="cachedataButton" mnemonicParsing="false" onAction="#cachedataButtonPressed" text="Önbel.ve Kul. Verilerini Sil" textFill="RED" AnchorPane.leftAnchor="305.0" AnchorPane.topAnchor="0.0">
                                                    <font>
                                                       <Font size="17.0" />
                                                    </font>
@@ -543,12 +543,12 @@
                                       <content>
                                         <AnchorPane minHeight="0.0" minWidth="0.0">
                                              <children>
-                                                <Button fx:id="lockButton" mnemonicParsing="false" onAction="#lockButtonPressed" text="Lock" textFill="RED" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                <Button fx:id="lockButton" mnemonicParsing="false" onAction="#lockButtonPressed" text="Kilitli" textFill="RED" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                    <font>
                                                       <Font size="17.0" />
                                                    </font>
                                                 </Button>
-                                                <Button fx:id="unlockButton" mnemonicParsing="false" onAction="#unlockButtonPressed" text="Unlock" textFill="#00c800" AnchorPane.rightAnchor="90.0" AnchorPane.topAnchor="0.0">
+                                                <Button fx:id="unlockButton" mnemonicParsing="false" onAction="#unlockButtonPressed" text="Kilitsiz" textFill="#00c800" AnchorPane.rightAnchor="90.0" AnchorPane.topAnchor="0.0">
                                                    <font>
                                                       <Font size="17.0" />
                                                    </font>
@@ -560,7 +560,7 @@
                                           <Font size="15.0" />
                                        </font>
                                     </TitledPane>
-                                    <TitledPane fx:id="downloaderPane" animated="false" collapsible="false" prefWidth="810.0" text="MIUI ROM Downloader" GridPane.columnSpan="2" GridPane.rowIndex="2">
+                                    <TitledPane fx:id="downloaderPane" animated="false" collapsible="false" prefWidth="810.0" text="MIUI ROM İndirici" GridPane.columnSpan="2" GridPane.rowIndex="2">
                                       <content>
                                         <AnchorPane minHeight="0.0" minWidth="0.0">
                                              <children>
@@ -576,18 +576,18 @@
                                                    <children>
                                                       <FlowPane hgap="25.0" GridPane.columnSpan="2">
                                                          <children>
-                                                            <TextField fx:id="codenameTextField" promptText="Codename">
+                                                            <TextField fx:id="codenameTextField" promptText="Kod Adı">
                                                                <font>
                                                                   <Font size="14.0" />
                                                                </font>
                                                             </TextField>
-                                                            <ComboBox fx:id="branchComboBox" prefWidth="175.0" promptText="Branch" />
-                                                            <Button fx:id="getlinkButton" mnemonicParsing="false" onAction="#getlinkButtonPressed" prefWidth="100.0" text="Get link">
+                                                            <ComboBox fx:id="branchComboBox" prefWidth="175.0" promptText="ROM Türü" />
+                                                            <Button fx:id="getlinkButton" mnemonicParsing="false" onAction="#getlinkButtonPressed" prefWidth="100.0" text="Link Al">
                                                                <font>
                                                                   <Font size="15.0" />
                                                                </font>
                                                             </Button>
-                                                            <Button fx:id="downloadromButton" mnemonicParsing="false" onAction="#downloadromButtonPressed" prefWidth="229.0" text="Download ROM">
+                                                            <Button fx:id="downloadromButton" mnemonicParsing="false" onAction="#downloadromButtonPressed" prefWidth="229.0" text="ROM İndir">
                                                                <font>
                                                                   <Font size="15.0" />
                                                                </font>
@@ -596,7 +596,7 @@
                                                       </FlowPane>
                                                       <FlowPane hgap="10.0" GridPane.rowIndex="1">
                                                          <children>
-                                                            <Label text="Latest version:">
+                                                            <Label text="Son Sürüm:">
                                                                <font>
                                                                   <Font size="15.0" />
                                                                </font>
