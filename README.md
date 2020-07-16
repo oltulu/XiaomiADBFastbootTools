@@ -1,4 +1,4 @@
-# Xiaomi ADB/Fastboot Tools 😊
+# Xiaomi ADB/Fastboot Araçları 😊
 
 ![](https://img.shields.io/github/downloads/Szaki/XiaomiADBFastbootTools/total.svg)
 ![](https://img.shields.io/github/license/Szaki/XiaomiADBFastbootTools.svg)
@@ -6,17 +6,17 @@
 
 ## Modules
 
-* **App Manager** - Uninstall/reinstall/disable/enable system apps and services on demand
-* **Camera2** - Enable Camera2 and EIS (TWRP required)
-* **File Explorer** - Transfer files between a device and a computer using ADB
-* **Screen density** - Tweak screen density by overriding the DPI value
-* **Screen resolution** - Tweak screen resolution by overriding the width and height values
-* **Device properties** - Retrieve tons of statistics and information about your device
-* **Flasher** - Flash any partition with an image, boot to any image or flash a Fastboot ROM (unlocked bootloader required)
-* **Wiper** - Wipe the cache or perform a factory reset
-* **OEM Unlocker & Locker** - Lock or unlock the bootloader (Unlocking is only supported by Android One devices)
-* **ROM Downloader** - Get links to the latest MIUI Fastboot ROMs or download them right away
-* **Rebooter** - Advanced rebooting options using ADB/Fastboot
+* **App Manager** - İsteğe bağlı sistem uygulamalarını ve hizmetlerini kaldırma / yeniden yükleme / devre dışı bırakma / etkinleştirme
+* **Camera2** - Kamera 2 ve EIS'yi etkinleştir (TWRP gerekir)
+* **File Explorer** - ADB kullanarak bir cihaz ile bilgisayar arasında dosya aktarma
+* **Screen density** - DPI değerini geçersiz kılarak ekran yoğunluğunu değiştirin
+* **Screen resolution** - Genişlik ve yükseklik değerlerini geçersiz kılarak ekran çözünürlüğünü değiştirin
+* **Device properties** - Cihazınız hakkında tonlarca istatistik ve bilgi alın
+* **Flasher** - Telefonunuzu flaşlayın, herhangi bir görüntüye önyükleme yapın veya bir Fastboot ROM'u flaşlayın (kilitsiz önyükleyici gerekir)
+* **Wiper** - Önbelleği silin veya fabrika ayarlarına sıfırlama yapın
+* **OEM Unlocker & Locker** - Önyükleyiciyi kilitleme veya kilidini açma (Kilit açma yalnızca Android One cihazları tarafından desteklenir)
+* **ROM Downloader** - En son MIUI Fastboot ROM'lara bağlantı alın veya hemen indirin
+* **Rebooter** - ADB / Fastboot kullanarak gelişmiş yeniden başlatma seçenekleri
 
 ![](screenshot.png)
 
